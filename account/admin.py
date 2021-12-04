@@ -15,6 +15,9 @@ class UserForm(forms.ModelForm):
     def save(self, commit=True):
         return User.objects.create_user(**self.cleaned_data)
 
+    def save_m2m(self):
+        pass
+
 
 class UserAdmin(admin.ModelAdmin):
     form = UserForm

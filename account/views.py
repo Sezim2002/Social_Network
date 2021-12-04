@@ -17,12 +17,6 @@ class RegistrationView(APIView):
             return Response('Ваш аккаунт успешно зарегистрирован. Вам выслано письмо с кодом активации', status=201)
         return Response(serializer.errors, status=400)
 
-    def post(self, request):
-        serializer = UserSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-
 
 class ActivationView(APIView):
     def post(self, request):
